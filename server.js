@@ -11,10 +11,11 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host : 'postgresql-amorphous-91763',       //this ip is localhost (127.0.0.1)
-      user : 'postgres',
-      password : 'postgres@1',
-      database : 'face_detect'
+      host : process.env.DATABASE_URL,       //this ip is localhost (127.0.0.1)
+      ssl: true
+      // user : 'postgres',
+      // password : 'postgres@1',
+      // database : 'face_detect'
     }
   });
 
@@ -33,7 +34,7 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
 app.listen(process.env.PORT || 3000, ()=> {
-    console.log('app is running on port ${process.env.PORT}')
+    console.log('app is running on port {process.env.PORT}')
 })
 
 
