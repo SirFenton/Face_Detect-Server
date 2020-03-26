@@ -11,7 +11,7 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',       //this ip is localhost
+      host : 'postgresql-amorphous-91763',       //this ip is localhost (127.0.0.1)
       user : 'postgres',
       password : 'postgres@1',
       database : 'face_detect'
